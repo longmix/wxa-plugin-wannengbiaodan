@@ -37,6 +37,11 @@
 ```
 关于参数的说明，见下文。
 
+### 效果预览
+
+![image](http://yanyubao.tseo.cn/saasdocs/wp-content/uploads/2021/03/Wan_Neng_Biao_Dan_Cha_Jian_Yu_Lan_001_Fu_Ben.png)
+
+
 
 ## 参数说明
 
