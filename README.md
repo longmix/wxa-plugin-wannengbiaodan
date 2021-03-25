@@ -6,20 +6,24 @@
 
 [https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)
 
-## 调用方法
+## 【调用方法1】通过Page跳转调用的方法
 
 ### 在app.json中引入插件
 
+
+
 ```javascript
 "plugins": {
-    "live-player-plugin": {
-        "version": "1.0.17",
+    "yyb_selfform_plugin": {
+        "version": "1.0.3",
         "provider": "wx00d1e2843c3b3f77" 
     }
   }
 ```
 
-如果是通过第三方服务商开发小程序，可以在ext.json中
+其中的版本号可能会有所变化。如果是通过第三方服务商开发小程序，可以在ext.json中。
+
+
 
 ### 在具体的页面中调用
 
@@ -28,28 +32,111 @@
       var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
       wx.navigateTo({
-        url: 'plugin-private://wx00d1e2843c3b3f77/pages/selfform?'+ params_str    
+        url: 'plugin-private://wx00d1e2843c3b3f77/pages/selfform?'+ params_str      
       })
 ```
-
 关于参数的说明，见下文。
 
-### 效果预览
 
-![image](http://yanyubao.tseo.cn/saasdocs/wp-content/uploads/2021/03/Wan_Neng_Biao_Dan_Cha_Jian_Yu_Lan_001_Fu_Ben.png)
+## 【调用方法2】通过组件调用的方法
+
+### 在app.json中引入插件，与通过Page跳转调用一样
+
+```javascript
+"plugins": {
+    "live-player-plugin": {
+        "version": "1.0.3",
+        "provider": "wx00d1e2843c3b3f77" 
+    }
+  }
+```
+其中的版本号可能会有所变化。
+
+同样，如果是通过第三方服务商开发小程序，可以放在ext.json中。
+
+
+### 在具体的页面中调用
+
+在页面中调用过程与Page跳转不同，
+
+#### 1、需要在json中声明组件
+
+```javascript
+
+{
+  "usingComponents": {
+
+    "selfform-tag": "plugin://yyb_selfform_plugin/selfform-tag"
+  }
+}
+
+```
+
+#### 2、需要在wxml的view标签中插入以下代码
+
+```javascript
+
+<selfform-tag         
+        sellerid="{{current_sellerid}}"
+        form_token="{{current_weiduke_token}}"
+        form_type="{{form_type}}"
+        formid ="{{current_formid}}"
+        submit_url="{{submit_url}}"
+        openid="{{current_openid}}"
+        bindevent001="aaaaaa" />
+
+```
+
+#### 3、在onLoad函数中，引用插件的函数，并初始化插件的数据表单的网络请求
+
+```javascript
+
+var my_plugin = requirePlugin('yyb_selfform_plugin');
+
+var selfform_data_params = {
+            data:{
+              sellerid:options.sellerid, 
+              form_token:options.form_token,
+              formid : options.formid,
+              form_type : options.form_type
+
+            }, 
+
+            callback:this.__selfform_data_callback
+      };
+
+      if(options.openid){
+        selfform_data_params.data.openid = options.openid;
+      }
+
+      if(options.userid){
+        selfform_data_params.data.userid = options.userid;
+      }
+
+      my_plugin.get_selfform_data(selfform_data_params);
+
+```
+这样做的主要目的，是在页面显示前，将服务器端设置好的表单数据先拉取到小程序中，并在onShow执行的时候，可以快速显示出来。
+
+#### 4、经过以上步骤，插件既可以正常显示并使用了。
+
+
+
+
 
 ## 参数说明
 
-
 | No. | 参数名称 | 必填 | 参数说明 |
-| :-: | :-: | :-: | :- |
+| :-----:| :----: | :----: | :---- |
 | 1 | sellerid | 是 | 延誉宝商户编号，用于动态获取头部和按钮的背景颜色。 |
-| 2 | token | 否 | 微读客项目Token，可选，用于验证formid是否合法。 |
-| 3 | formid | 是 | 万能表单ID，用于显示表单的内容 |
-| 4 | form_type | 否 | 表单类型，默认为2，代表读取微读客的万能表单 |
-| 5 | submit_url | 否 | 数据提交的网址入口，URL的域名必须在小程序的request域名列表中，具体见下面说明。 |
-| 6 | 其他参数 | 否 | 在进入小程序页面时候带进去，并随着其他字段一起提交到网址。 |
-| 7 | scene | 否 | 小程序中的场景ID，可以生产无限多个小程序码。 |
+| 2 | form_token | 否 |  微读客项目Token，可选，用于验证formid是否合法。 |
+| 3 | formid | 是 |  万能表单ID，用于显示表单的内容 |
+| 4 | form_type | 否 |  表单类型，默认为2，代表读取微读客的万能表单 |
+| 5 | submit_url | 否 |  数据提交的网址入口，URL的域名必须在小程序的request域名列表中，具体见下面说明。 |
+| 6 | 其他参数 | 否 |  在进入小程序页面时候带进去，并随着其他字段一起提交到网址。  |
+| 7 | scene | 否 |  小程序中的场景ID，可以生产无限多个小程序码。  |
+| 8 | openid | 否 |  如果form_type等于2，则可以带上openid，以获取之前填写的数据。  |
+| 9 | userid | 否 |  如果form_type等于1，则userid参数必带，请做好身份验证。  |
 
 ### 关于submit_url说明
 
@@ -61,14 +148,14 @@ submit_url必须返回的格式为 {'code':1, 'msg':'success'}，其中code为1�
 ### 关于“其他参数”说明
 
 在进入小程序页面时候带进去，并随着其他字段一起提交到网址。
-举例说明：form_type=2&token=abcdefg&formid=1234&orderno=87654321，那么“orderno”就是其他参数，保存数据的时候，会被一起提交到服务器。
+举例说明：form_type=2&form_token=abcdefg&formid=1234&orderno=87654321，那么“orderno”就是其他参数，保存数据的时候，会被一起提交到服务器。
 
 ### 关于scene参数的说明
 
 在微信小程序中：以上设置支持scene参数模式（scene：小程序中的场景ID），可以生产无限多个小程序码。
-格式为：sellerid#formtype#token#formid，例如“pmyxQxkkU2#abcd#1234”
+格式为：sellerid#formtype#form_token#formid，例如“pmyxQxkkU2#abcd#1234”
 代表 :
-sellerid等于pmyxQxkkU，form_type等于 2，token为abcdef，formid为1234。
+sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为1234。
 
 如果form_type为3，参考为2的情况（小程序端暂不支持为3的场景）；
 如果为1，则后面两个参数随便填写，但是必须填写。
