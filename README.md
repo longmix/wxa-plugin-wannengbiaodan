@@ -47,7 +47,7 @@
 参数举例如下，关于参数的说明，见下文。
 
 | No. | 参数举例 | 参数说明 |
-| :-----:| :----: | :----: | :---- |
+| :-----:| :----: | :----: |
 | 1 | sellerid=pQNNmSkaq&form_type=1&userid=1234&checkstr=aaaaaaaaaa | 请求商户pQNNmSkaq的会员ID为1234的会员的属性 |
 | 2 | sellerid=pmyxQxkkU&form_type=2&form_token=gwcuuk1411034699&formid=37 | 填写CMS系统中ID为37的万能表单 |
 | 3 | 参数太长，见“备注001” | 填写CMS系统中ID为342的万能表单，以及其他操作。 |
@@ -259,14 +259,14 @@ sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为123
 参数举例如下，关于参数的说明，见下文。
 
 | No. | 参数举例 | 参数说明 |
-| :-----:| :----: | :----: | :---- |
+| :-----:| :----: | :----: |
 | 1 | sellerid=pQNNmSkaq&platform=cms&imgid=7967 | 获取CMS系统中的文章ID为7967的富媒体内容 |
 | 2 | sellerid=pQNNmSkaq&platform=pic&imgid=302 | 获取商城系统中的ID为302的广告图片 |
-| 3 | 参数太长，见“备注001” | 通过网址获取自定义页面的内容，并设置推荐人ID为1234。 |
+| 3 | 参数太长，见“备注002” | 通过网址获取自定义页面的内容，并设置推荐人ID为1234。 |
 | 4 | sellerid=pQNNmSkaq&scene=7967@0@cms | 获取CMS系统中的文章ID为7967的富媒体内容 |
 | 5 | sellerid=pQNNmSkaq&scene=302@0@pic | 获取商城系统中的ID为302的广告图片 |
 
->备注001： sellerid=pQNNmSkaq&parentid=1234&data_url=https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fget_order_scan_report_page%3Forderno%3D20170123172139NJVOPW%26messageid%3D2968
+>备注002： sellerid=pQNNmSkaq&parentid=1234&data_url=https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fget_order_scan_report_page%3Forderno%3D20170123172139NJVOPW%26messageid%3D2968
 
 
 
