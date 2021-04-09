@@ -1,26 +1,18 @@
 # 万能表单插件使用说明
 
-
 万能表单和问卷调查的微信小程序插件，快速制作在线表单收集信息，是万能表单、问卷调查、自定义表单、信息收集表、数据采集表的功能软件。
 
 最新的插件版本，除了支持**万能表单**之外，还支持**自定义页面**，<u>将传统H5网页自动转为图文并茂的小程序原生页面</u>。
-
 
 项目最新的更新信息和使用说明见：
 
 [https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)
 
-
-
-
->*以下是万能表单的功能调用*
-
+> *以下是万能表单的功能调用*
 
 ## 【调用方法1】通过Page跳转调用的方法
 
 ### 在app.json中引入插件
-
-
 
 ```javascript
 "plugins": {
@@ -33,13 +25,10 @@
 
 其中的版本号可能会有所变化。如果是通过第三方服务商开发小程序，可以在ext.json中。
 
-
-
 ### 在具体的页面中调用
 
 ```javascript
-
-      var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
+var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
       wx.navigateTo({
         url: 'plugin-private://wx00d1e2843c3b3f77/pages/selfform?'+ params_str      
@@ -56,11 +45,8 @@
 | 4 | sellerid=**pmyxQxkkU**&form_type=3&form_token=**cugnmr1590638215**&formid=**4493** | 为CMS系统中ID为4493的分类增加一篇文章 |
 | 5 | sellerid=**pQNNmSkaq**&scene=**302@0@pic** | 获取商城系统中的ID为302的广告图片 |
 
->备注001： sellerid=**pmyxQxkkU**&form_type=2&form_token=**mrfuhd1546833814**&formid=**342**&submit_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fsubmit_data_notify_type**&openid=**oTESv4sCTCIMncMYUisOKRgNBTFg**
-（填写CMS系统中ID为342的万能表单，并将数据保存到指定的网址submit_url，同时，如果openid:oTESv4sCTCIMncMYUisOKRgNBTFg）
-
-
-
+> 备注001： sellerid=**pmyxQxkkU**&form_type=2&form_token=**mrfuhd1546833814**&formid=**342**&submit_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fsubmit_data_notify_type**&openid=**oTESv4sCTCIMncMYUisOKRgNBTFg**
+> （填写CMS系统中ID为342的万能表单，并将数据保存到指定的网址submit_url，同时，如果openid:oTESv4sCTCIMncMYUisOKRgNBTFg）
 
 ## 【调用方法2】通过组件调用的方法
 
@@ -76,10 +62,10 @@
     }
   }
 ```
+
 其中的版本号可能会有所变化。
 
 同样，如果是通过第三方服务商开发小程序，可以放在ext.json中。
-
 
 ### 在具体的页面中调用
 
@@ -88,48 +74,36 @@
 #### 1、需要在json中声明组件
 
 ```javascript
-
 {
   "usingComponents": {
 
     "selfform-tag": "plugin://yyb_selfform_plugin/selfform-tag"
   }
 }
-
 ```
 
 #### 2、需要在wxml的view标签中插入以下代码
 
 ```javascript
-
-<selfform-tag         
-        sellerid="{{current_sellerid}}"
-        form_token="{{current_weiduke_token}}"
-        form_type="{{form_type}}"
-        formid ="{{current_formid}}"
-        submit_url="{{submit_url}}"
-        openid="{{current_openid}}"
+<selfform-tag    
+        wx:if="{{show_selfform_tag == 1}}"        
+        callback_data = "{{callback_data}}"
         bindevent001="aaaaaa" />
-
 ```
 
 #### 3、在onLoad函数中，引用插件的函数，并初始化插件的数据表单的网络请求
 
 ```javascript
-
-var my_plugin = requirePlugin('yyb_selfform_plugin');
-
 var selfform_data_params = {
             data:{
               sellerid:options.sellerid, 
-              form_token:options.form_token,
+              form_token: options.form_token,
               formid : options.formid,
-              form_type : options.form_type
+              form_type : options.form_type,
 
             }, 
+            callback:this.__selfform_data_callback};
 
-            callback:this.__selfform_data_callback
-      };
 
       if(options.openid){
         selfform_data_params.data.openid = options.openid;
@@ -138,17 +112,47 @@ var selfform_data_params = {
       if(options.userid){
         selfform_data_params.data.userid = options.userid;
       }
+      if(options.checkstr){
+        selfform_data_params.data.checkstr = options.checkstr;
+      }
 
+      //引用第三方插件的函数
+      var my_plugin = requirePlugin('yyb_selfform_plugin');
       my_plugin.get_selfform_data(selfform_data_params);
 
+
+
+      //=====分析参数=====
+      if(options){
+        var arr = Object.keys(options);
+
+        var options_len = arr.length;
+
+
+        if (options_len > 0){
+          var params_str = '';
+  
+          for(var key in options){
+            params_str += key+'='+options[key]+'&';
+          }
+          params_str = params_str.substr(0, params_str.length - 1);
+  
+          this.setData({
+            current_params_str:params_str
+          });
+        }
+      }
+      //===== End ======
 ```
+
 这样做的主要目的，是在页面显示前，将服务器端设置好的表单数据先拉取到小程序中，并在onShow执行的时候，可以快速显示出来。
+
+函数 selfform_data_callback 主要处理回到的数据，用于渲染顶部导航栏的背景颜色和文字颜色。
 
 #### 4、经过以上步骤，插件既可以正常显示并使用了。
 
-
-
-
+以上步骤的具体调用过程，请参考本项目的miniprogram目录，路径：
+**/miniprogram/pages/show_form/show_form.js**
 
 ## 万能表单的参数说明
 
@@ -208,7 +212,6 @@ sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为123
 
 [https://github.com/longmix/shopmallminiprogram](https://github.com/longmix/shopmallminiprogram)
 
-
 ## 常见问题
 
 ### 如何设置表单头部的背景颜色和字体颜色
@@ -228,9 +231,7 @@ sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为123
 * 设置路径：SaaS云后台>>CMS控制台>>万能表单
 * 操作方法：在具体某一个表单的操作区，找到“设置”，在这里调整即可。
 
-
->**以下是自定义页面的功能调用**
-
+> **以下是自定义页面的功能调用**
 
 ## 【调用方法1】通过Page跳转调用的方法
 
@@ -247,18 +248,16 @@ sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为123
 
 其中的版本号可能会有所变化。如果是通过第三方服务商开发小程序，可以在ext.json中。
 
-
-
 ### 在具体的页面中调用
 
 ```javascript
-
-      var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
+var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 
       wx.navigateTo({
         url: 'plugin-private://wx00d1e2843c3b3f77/pages/welcome_page?'+ params_str      
       })
 ```
+
 参数举例如下，关于参数的说明，见下文。
 
 | No. | 参数举例 | 参数说明 |
@@ -269,15 +268,11 @@ sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为123
 | 4 | sellerid=**pQNNmSkaq**&scene=**7967@0@cms** | 获取CMS系统中的文章ID为7967的富媒体内容 |
 | 5 | sellerid=**pQNNmSkaq**&scene=**302@0@pic** | 获取商城系统中的ID为302的广告图片 |
 
->备注002： sellerid=**pQNNmSkaq**&parentid=**1234**&data_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fget_order_scan_report_page%3Forderno%3D20170123172139NJVOPW%26messageid%3D2968**
-
-
-
+> 备注002： sellerid=**pQNNmSkaq**&parentid=**1234**&data_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fget_order_scan_report_page%3Forderno%3D20170123172139NJVOPW%26messageid%3D2968**
 
 ## 【调用方法2】通过组件调用的方法
 
 > 同万能表单，如果不想做深入集成，通过方法1完全够用，此方法可以无视。具体调用方法后续更新。
-
 
 ## 参数说明
 
