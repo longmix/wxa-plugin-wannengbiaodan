@@ -1,0 +1,129 @@
+<!--
+<navigator id="nav" url="plugin://hello-plugin/hello-page">
+  Go to Plugin page
+</navigator>
+<hello-list />
+-->
+
+
+<view class="page-body">
+  <view class="btn-area" id="buttonContainer">
+
+    <form catchsubmit="formSubmit" catchreset="formReset">
+
+      <view class="input_line">
+          <view class="input_text">延誉宝编号</view>
+          <view><input class="input" type="text" name="sellerid"/></view>
+      </view>
+      <view class="input_line">
+        <view class="input_text">微读客Token</view>
+        <view><input class="input" type="text" name="form_token"/></view>
+      </view>
+      <view class="input_line">
+        <view class="input_text">万能表单ID</view>
+        <view><input class="input" type="text" name="formid"/></view>
+      </view>
+
+      <!-- <view class="input_line">
+        <view class="input_text">OpenID</view>
+        <view><input class="input" type="text" name="openid"/></view>
+      </view> -->
+
+      <view class="input_line">
+      <view class="input_text">调用方式</view>
+      <view >
+        <radio-group bindchange="radioChange" style="display:grid;">
+        <radio value="plugin_page">通过页面调用</radio>
+        <radio value="plugin_components" style="margin-top:10px">通过组件调用</radio>
+        </radio-group>
+      </view>
+      </view>
+
+      <button type="primary"  formType="submit" style="width: 90%;">跳转万能表单</button>    
+
+
+    </form>
+
+  </view>
+
+
+
+
+  <!-- <button bindtap="go_selffrom_plugin">
+        前往selffrom组件页面
+  </button> -->
+
+
+
+<view class="btn-area" id="buttonContainer">
+
+<form catchsubmit="formSubmit_welcome_page" catchreset="formReset">
+
+  <view class="input_line">
+      <view class="input_text">平台类型</view>
+      <view><input class="input" type="text" name="imgid"/></view>
+  </view>
+  <view class="input_line">
+    <view class="input_text">推荐者</view>
+    <view><input class="input" type="text" name="parentid"/></view>
+  </view>
+  <view class="input_line">
+    <view class="input_text">类型对应ID</view>
+    <view><input class="input" type="text" name="platform"/></view>
+  </view>
+
+  <view class="input_line" style="color:#666;">
+    填写以上参数或填写以下两个参数中任意一个
+  </view>
+
+
+  <view class="input_line">
+    <view class="input_text">指定网址</view>
+    <view><input class="input" type="text" name="data_url"/></view>
+  </view>
+
+
+  <view class="input_line">
+    <view class="input_text">二维码参数</view>
+    <view><input class="input" type="text" name="scene"/></view>
+  </view>
+
+  <!-- <view class="input_line">
+    <view class="input_text">OpenID</view>
+    <view><input class="input" type="text" name="openid"/></view>
+  </view> -->
+
+  <view class="input_line">
+  <view class="input_text">调用方式</view>
+  <view >
+    <radio-group bindchange="radioChange" style="display:grid;">
+    <radio value="plugin_page">通过页面调用</radio>
+    <radio value="plugin_components" style="margin-top:10px">通过组件调用</radio>
+    </radio-group>
+  </view>
+  </view>
+
+  <button type="primary"  formType="submit" style="width: 90%;">跳转自定义页面</button>    
+
+
+</form>
+
+</view>
+
+<view class="btn-area" id="buttonContainer">
+
+  <view style="width: 90%;margin: 0 auto;font-size:26rpx;">
+    <view>参数说明请查看插件说明文档，位置：doc/README.md。</view>
+    <view> ------ </view>
+    <view>或者 
+    https://github.com/longmix/shopmallminiprogram</view>
+    <view> ------ </view>
+    <view>测试过程中如果不填写，则使用默认参数读取一个万能表单。</view>
+  </view>
+
+
+</view>
+  
+  
+
+</view>

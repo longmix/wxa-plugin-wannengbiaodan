@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+
+    "selfform-tag": "plugin://yyb_selfform_plugin/selfform-tag"
+  }
+}

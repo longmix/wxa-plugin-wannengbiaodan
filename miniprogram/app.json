@@ -1,0 +1,14 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/show_form/show_form",
+		"pages/show_welcome_page/show_welcome_page"
+	],
+	"plugins": {
+		"yyb_selfform_plugin": {
+			"version": "dev",
+			"provider": "wx00d1e2843c3b3f77"
+		}
+	},
+	"sitemapLocation": "sitemap.json"
+}

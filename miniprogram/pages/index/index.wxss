@@ -1,0 +1,40 @@
+/* pages/index/index.wxss */
+
+.btn-area {
+  padding: 20rpx;
+  border: solid 1rpx #666;
+  margin: 20rpx;
+  font-size: 30rpx;
+}
+
+button{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+#nav {
+  text-align: center;
+  background: #eeeeee;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+#add {
+  margin: 1em;
+}
+.input_line{
+  display: flex;
+  margin: 10rpx 0 10rpx 5rpx;
+  padding-left:30rpx;
+}
+.input_text {
+  width:190rpx;
+}
+.input{
+  border: 1px solid #130c0e;
+  border-radius: 5rpx;
+  margin-left:15rpx;
+  height: 60rpx;
+  padding-left: 30rpx;
+}
