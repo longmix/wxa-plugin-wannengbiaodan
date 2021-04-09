@@ -31,14 +31,15 @@
 var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
       wx.navigateTo({
-        url: 'plugin-private://wx00d1e2843c3b3f77/pages/selfform?'+ params_str      
+        url: 'plugin-private://wx00d1e2843c3b3f77/pages/selfform?'+ params_str    
       })
 ```
 
 参数举例如下，关于参数的说明，见下文。
 
+
 | No. | 参数举例 | 参数说明 |
-| :-----:| :----: | :----: |
+| :-: | :-: | :-: |
 | 1 | sellerid=**pQNNmSkaq**&form_type=1&userid=**1234**&checkstr=**aaaaaaaaaa** | 请求商户pQNNmSkaq的会员ID为1234的会员的属性 |
 | 2 | sellerid=**pmyxQxkkU**&form_type=2&form_token=**gwcuuk1411034699**&formid=**37** | 填写CMS系统中ID为37的万能表单 |
 | 3 | 参数太长，见“备注001” | 填写CMS系统中ID为342的万能表单，以及其他操作。 |
@@ -85,8 +86,8 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 #### 2、需要在wxml的view标签中插入以下代码
 
 ```javascript
-<selfform-tag    
-        wx:if="{{show_selfform_tag == 1}}"        
+<selfform-tag  
+        wx:if="{{show_selfform_tag == 1}}"      
         callback_data = "{{callback_data}}"
         bindevent001="aaaaaa" />
 ```
@@ -152,21 +153,24 @@ var selfform_data_params = {
 #### 4、经过以上步骤，插件既可以正常显示并使用了。
 
 以上步骤的具体调用过程，请参考本项目的miniprogram目录，路径：
+
 **/miniprogram/pages/show_form/show_form.js**
+
 
 ## 万能表单的参数说明
 
+
 | No. | 参数名称 | 必填 | 参数说明 |
-| :-----:| :----: | :----: | :---- |
+| :-: | :-: | :-: | :- |
 | 1 | sellerid | 是 | 延誉宝商户编号，用于动态获取头部和按钮的背景颜色。 |
-| 2 | form_token | 否 |  微读客项目Token，可选，用于验证formid是否合法。 |
-| 3 | formid | 是 |  万能表单ID，用于显示表单的内容 |
-| 4 | form_type | 否 |  表单类型，默认为2，代表读取微读客的万能表单 |
-| 5 | submit_url | 否 |  数据提交的网址入口，URL的域名必须在小程序的request域名列表中，具体见下面说明。 |
-| 6 | 其他参数 | 否 |  在进入小程序页面时候带进去，并随着其他字段一起提交到网址。  |
-| 7 | scene | 否 |  小程序中的场景ID，可以生产无限多个小程序码。  |
-| 8 | openid | 否 |  如果form_type等于2，则可以带上openid，以获取之前填写的数据。  |
-| 9 | userid | 否 |  如果form_type等于1，则userid参数必带，请做好身份验证。  |
+| 2 | form_token | 否 | 微读客项目Token，可选，用于验证formid是否合法。 |
+| 3 | formid | 是 | 万能表单ID，用于显示表单的内容 |
+| 4 | form_type | 否 | 表单类型，默认为2，代表读取微读客的万能表单 |
+| 5 | submit_url | 否 | 数据提交的网址入口，URL的域名必须在小程序的request域名列表中，具体见下面说明。 |
+| 6 | 其他参数 | 否 | 在进入小程序页面时候带进去，并随着其他字段一起提交到网址。 |
+| 7 | scene | 否 | 小程序中的场景ID，可以生产无限多个小程序码。 |
+| 8 | openid | 否 | 如果form_type等于2，则可以带上openid，以获取之前填写的数据。 |
+| 9 | userid | 否 | 如果form_type等于1，则userid参数必带，请做好身份验证。 |
 
 ### 关于submit_url说明
 
@@ -254,14 +258,15 @@ sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为123
 var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 
       wx.navigateTo({
-        url: 'plugin-private://wx00d1e2843c3b3f77/pages/welcome_page?'+ params_str      
+        url: 'plugin-private://wx00d1e2843c3b3f77/pages/welcome_page?'+ params_str    
       })
 ```
 
 参数举例如下，关于参数的说明，见下文。
 
+
 | No. | 参数举例 | 参数说明 |
-| :-----:| :----: | :----: |
+| :-: | :-: | :-: |
 | 1 | sellerid=**pQNNmSkaq**&platform=cms&imgid=**7967** | 获取CMS系统中的文章ID为7967的富媒体内容 |
 | 2 | sellerid=**pQNNmSkaq**&platform=pic&imgid=**302** | 获取商城系统中的ID为302的广告图片 |
 | 3 | 参数太长，见“备注002” | 通过网址获取自定义页面的内容，并设置推荐人ID为1234。 |
@@ -276,14 +281,12 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 
 ## 参数说明
 
+
 | No. | 参数名 | 必填 | 参数说明 |
-| :-----:| :----: | :----: | :---- |
+| :-: | :-: | :-: | :- |
 | 1 | sellerid | 是 | 延誉宝商户编号，用于动态获取头部和按钮的背景颜色。 |
-| 2 | platform | 是 |  内容所属的平台，支持cms和pic |
-| 3 | imgid | 是 |  延誉宝CMS平台的文章ID，或者商城广告图片的ID |
-| 4 | parentid | 否 |  推荐人ID，可以为0，目前只有定义data_url的时候，可以在处理逻辑值扩展 |
-| 5 | data_url | 否 |  获取数据来源的网址，如果定义了此参数，则从这个获取媒体内容。 |
-| 6 | scene | 否 |  小程序中的场景ID，可以生产无限多个小程序码。  |
-
-
-
+| 2 | platform | 是 | 内容所属的平台，支持cms和pic |
+| 3 | imgid | 是 | 延誉宝CMS平台的文章ID，或者商城广告图片的ID |
+| 4 | parentid | 否 | 推荐人ID，可以为0，目前只有定义data_url的时候，可以在处理逻辑值扩展 |
+| 5 | data_url | 否 | 获取数据来源的网址，如果定义了此参数，则从这个获取媒体内容。 |
+| 6 | scene | 否 | 小程序中的场景ID，可以生产无限多个小程序码。 |
