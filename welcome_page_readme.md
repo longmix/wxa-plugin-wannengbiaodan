@@ -10,8 +10,7 @@
 
 设置自定义页面的底部导航菜单，在SaaS云后台的路径为：云后台>>功能与扩展>>自定义页面。
 
-[https://yanyubao.tseo.cn/Supplier/WelcomePageMgr/index.html](https://https://yanyubao.tseo.cn/Supplier/WelcomePageMgr/index.html)
-
+https://yanyubao.tseo.cn/Supplier/WelcomePageMgr/index.html
 
 > **以下是自定义页面的功能调用**
 
@@ -42,7 +41,6 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 
 参数举例如下，关于参数的说明，见下文。
 
-
 | No. | 参数举例 | 参数说明 |
 | :-: | :-: | :-: |
 | 1 | sellerid=**pQNNmSkaq**&platform=cms&imgid=**7967** | 获取CMS系统中的文章ID为7967的富媒体内容 |
@@ -56,19 +54,23 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 ## 【调用方法2】通过组件调用的方法
 
 > 同万能表单，如果不想做深入集成，通过方法1完全够用，此方法可以无视。
->
+> 
 > 具体调用方法见：
->
+> 
 > *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js)*
 
 ## 参数说明
-
 
 | No. | 参数名 | 必填 | 参数说明 |
 | :-: | :-: | :-: | :- |
 | 1 | sellerid | 是 | 延誉宝商户编号，用于动态获取头部和按钮的背景颜色。 |
 | 2 | platform | 是 | 内容所属的平台，支持cms和pic |
 | 3 | imgid | 是 | 延誉宝CMS平台的文章ID，或者商城广告图片的ID |
-| 4 | parentid | 否 | 推荐人ID，可以为0，目前只有定义data_url的时候，可以在处理逻辑值扩展 |
+| 4 | scene | 否 | 小程序中的场景ID，可以生产无限多个小程序码。 |
 | 5 | data_url | 否 | 获取数据来源的网址，如果定义了此参数，则从这个获取媒体内容。 |
-| 6 | scene | 否 | 小程序中的场景ID，可以生产无限多个小程序码。 |
+| 6 | parentid | 否 | 推荐人ID，可以为0，目前只有定义data_url的时候，可以在处理逻辑值扩展 |
+| 7 | openid | 否 | 字符串，可为空 |
+| 8 | userid | 否 | 数字，可为0 |
+| 7 | checkstr | 否 | 字符串，可为空 |
+
+
