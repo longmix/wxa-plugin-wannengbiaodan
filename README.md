@@ -8,6 +8,12 @@
 
 [https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)
 
+
+调用自定义页面请移步：
+
+*[https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)*
+
+
 > *以下是万能表单的功能调用*
 
 ## 【调用方法1】通过Page跳转调用的方法
@@ -31,7 +37,7 @@
 var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
       wx.navigateTo({
-        url: 'plugin-private://wx00d1e2843c3b3f77/pages/selfform?'+ params_str    
+        url: 'plugin-private://wx00d1e2843c3b3f77/pages/selfform?'+ params_str  
       })
 ```
 
@@ -87,7 +93,7 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
 ```javascript
 <selfform-tag  
-        wx:if="{{show_selfform_tag == 1}}"      
+        wx:if="{{show_selfform_tag == 1}}"  
         callback_data = "{{callback_data}}"
         bindevent001="aaaaaa" />
 ```
@@ -152,9 +158,13 @@ var selfform_data_params = {
 
 #### 4、经过以上步骤，插件既可以正常显示并使用了。
 
-以上步骤的具体调用过程，请参考本项目的miniprogram目录，路径：
 
-**/miniprogram/pages/show_form/show_form.js**
+
+以上步骤的完整代码，在本项目的miniprogram目录，路径：
+
+*[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js)*
+
+其中`onShareAppMessage`定义了分享给微信好友的参数，可以直接使用。
 
 
 ## 万能表单的参数说明
@@ -234,59 +244,3 @@ sellerid等于pmyxQxkkU，form_type等于 2，form_token为abcdef，formid为123
 
 * 设置路径：SaaS云后台>>CMS控制台>>万能表单
 * 操作方法：在具体某一个表单的操作区，找到“设置”，在这里调整即可。
-
-> **以下是自定义页面的功能调用**
-
-## 【调用方法1】通过Page跳转调用的方法
-
-### 在app.json中引入插件
-
-```javascript
-"plugins": {
-    "yyb_selfform_plugin": {
-        "version": "1.1.0",
-        "provider": "wx00d1e2843c3b3f77" 
-    }
-  }
-```
-
-其中的版本号可能会有所变化。如果是通过第三方服务商开发小程序，可以在ext.json中。
-
-### 在具体的页面中调用
-
-```javascript
-var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
-
-      wx.navigateTo({
-        url: 'plugin-private://wx00d1e2843c3b3f77/pages/welcome_page?'+ params_str    
-      })
-```
-
-参数举例如下，关于参数的说明，见下文。
-
-
-| No. | 参数举例 | 参数说明 |
-| :-: | :-: | :-: |
-| 1 | sellerid=**pQNNmSkaq**&platform=cms&imgid=**7967** | 获取CMS系统中的文章ID为7967的富媒体内容 |
-| 2 | sellerid=**pQNNmSkaq**&platform=pic&imgid=**302** | 获取商城系统中的ID为302的广告图片 |
-| 3 | 参数太长，见“备注002” | 通过网址获取自定义页面的内容，并设置推荐人ID为1234。 |
-| 4 | sellerid=**pQNNmSkaq**&scene=**7967@0@cms** | 获取CMS系统中的文章ID为7967的富媒体内容 |
-| 5 | sellerid=**pQNNmSkaq**&scene=**302@0@pic** | 获取商城系统中的ID为302的广告图片 |
-
-> 备注002： sellerid=**pQNNmSkaq**&parentid=**1234**&data_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fget_order_scan_report_page%3Forderno%3D20170123172139NJVOPW%26messageid%3D2968**
-
-## 【调用方法2】通过组件调用的方法
-
-> 同万能表单，如果不想做深入集成，通过方法1完全够用，此方法可以无视。具体调用方法后续更新。
-
-## 参数说明
-
-
-| No. | 参数名 | 必填 | 参数说明 |
-| :-: | :-: | :-: | :- |
-| 1 | sellerid | 是 | 延誉宝商户编号，用于动态获取头部和按钮的背景颜色。 |
-| 2 | platform | 是 | 内容所属的平台，支持cms和pic |
-| 3 | imgid | 是 | 延誉宝CMS平台的文章ID，或者商城广告图片的ID |
-| 4 | parentid | 否 | 推荐人ID，可以为0，目前只有定义data_url的时候，可以在处理逻辑值扩展 |
-| 5 | data_url | 否 | 获取数据来源的网址，如果定义了此参数，则从这个获取媒体内容。 |
-| 6 | scene | 否 | 小程序中的场景ID，可以生产无限多个小程序码。 |
