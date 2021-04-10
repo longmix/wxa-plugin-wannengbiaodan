@@ -59,7 +59,7 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 >
 > js文件中具体调用方法见：
 >
-> *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js)*
+> *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_welcome_page/show_welcome_page.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_welcome_page/show_welcome_page.js)*
 
 
 ### json和wxml文件中的设置
