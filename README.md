@@ -8,11 +8,9 @@
 
 [https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)
 
-
 调用自定义页面请移步：
 
-*[https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)*
-
+*[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/welcome_page_readme.md](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/welcome_page_readme.md)*
 
 > *以下是万能表单的功能调用*
 
@@ -158,14 +156,11 @@ var selfform_data_params = {
 
 #### 4、经过以上步骤，插件既可以正常显示并使用了。
 
-
-
 以上步骤的完整代码，在本项目的miniprogram目录，路径：
 
 *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js)*
 
 其中`onShareAppMessage`定义了分享给微信好友的参数，可以直接使用。
-
 
 ## 万能表单的参数说明
 
