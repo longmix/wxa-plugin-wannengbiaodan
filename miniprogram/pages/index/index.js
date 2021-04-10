@@ -45,6 +45,14 @@ Page({
       formid:'376',
     }
 
+    var options888 = {
+      sellerid:'pmyxQxkkU',
+      form_type:'2',
+      form_token:'"mrfuhd1546833814"',  
+      formid:'325',
+      openid:"oTESv4oN4pobHqg8LryZU3kF3YCc"
+    }
+
     //CMS文章分类
     var options888 = {
       sellerid:'pmyxQxkkU',
@@ -55,13 +63,15 @@ Page({
 
     //自定义提交数据的保存目标，并追加openid这个参数
     //在万能表单中，openid记录了用户上次填写的信息
-    var options = {
+    var options888 = {
       sellerid:'pmyxQxkkU',
       form_type:'2',
       form_token:'mrfuhd1546833814',      
       formid:'342',
       submit_url: encodeURIComponent('https://yanyubao.tseo.cn/openapi/Jianghanyinhua/submit_data_notify_type'),
-      openid:'oTESv4sCTCIMncMYUisOKRgNBTFg'
+      openid:'oTESv4sCTCIMncMYUisOKRgNBTFg',
+      userid:'8888',
+      checkstr:'28bba0f22a29881ba291fb50f4152655'
     }
 
 

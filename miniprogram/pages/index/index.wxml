@@ -33,13 +33,13 @@
       <view class="input_text">调用方式</view>
       <view >
         <radio-group bindchange="radioChange" style="display:grid;">
-        <radio value="plugin_page">通过页面调用</radio>
-        <radio value="plugin_components" style="margin-top:10px">通过组件调用</radio>
+        <radio value="plugin_page">跳转页面调用</radio>
+        <radio value="plugin_components" style="margin-top:10px">引用组件调用</radio>
         </radio-group>
       </view>
       </view>
 
-      <button type="primary"  formType="submit" style="width: 90%;">跳转万能表单</button>    
+      <button type="primary"  formType="submit" style="width: 90%;">打开万能表单</button>    
 
 
     </form>
@@ -97,13 +97,13 @@
   <view class="input_text">调用方式</view>
   <view >
     <radio-group bindchange="radioChange" style="display:grid;">
-    <radio value="plugin_page">通过页面调用</radio>
-    <radio value="plugin_components" style="margin-top:10px">通过组件调用</radio>
+    <radio value="plugin_page">跳转页面调用</radio>
+    <radio value="plugin_components" style="margin-top:10px">引用组件调用</radio>
     </radio-group>
   </view>
   </view>
 
-  <button type="primary"  formType="submit" style="width: 90%;">跳转自定义页面</button>    
+  <button type="primary"  formType="submit" style="width: 90%;">打开自定义页面</button>    
 
 
 </form>

@@ -48,9 +48,15 @@ Page({
               form_type : options.form_type,
 
             }, 
-            callback:this.__selfform_data_callback};
+            callback:this.__selfform_data_callback
+      };
 
+      //是否带submit_url参数
+      if(options.submit_url){
+        selfform_data_params.data.submit_url = decodeURIComponent(options.submit_url);
+      }
 
+      //====  这三项参数可以在自己的项目中根据实际情况赋值，也可以通过这个page的参数传入进来 ======
       if(options.openid){
         selfform_data_params.data.openid = options.openid;
       }
@@ -61,6 +67,11 @@ Page({
       if(options.checkstr){
         selfform_data_params.data.checkstr = options.checkstr;
       }
+      //======================== End ========================
+
+      wx.showLoading({
+        title: '数据加载中...',
+      });
 
       //引用第三方插件的函数
       var my_plugin = requirePlugin('yyb_selfform_plugin');
@@ -68,7 +79,7 @@ Page({
 
 
 
-      //=====分析参数=====
+      //=====分析参数，分享转发的时候使用=====
       if(options){
         var arr = Object.keys(options);
 
@@ -170,6 +181,10 @@ Page({
     __selfform_data_callback:function(callback_data){
 
       console.log('页面收到data中的回调数据 welcome_page_callback====>>>>', callback_data);
+
+      wx.hideLoading({
+        success: (res) => {},
+      });
   
       if(callback_data.code != 1){
         console.log('数据状态码不对');

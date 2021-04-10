@@ -28,7 +28,7 @@ Page({
 		console.log('welcome welcome welcome ====>>', options);
 
 
-		//=====分析参数=====
+		//=====分析参数，用于分享转发=====
     if(options){
       var arr = Object.keys(options);
       var options_len = arr.length;
@@ -55,21 +55,44 @@ Page({
 		}
 
 
-
-		
-		
-
 		var welcome_data_params = {
-            data:{
-              sellerid:options.sellerid,
-              scene:options.scene,
-              data_url : options.data_url,
-			  			platform : options.platform,
-							imgid: options.imgid,
-							parentid: options.parentid,
-							platform: options.platform
-            }, 
-            callback:this.welcome_page_callback};	
+					data:{
+						sellerid:options.sellerid,
+						platform : options.platform,
+						imgid: options.imgid,
+					}, 
+					callback:this.welcome_page_callback
+		};
+
+		if(options.scene){
+			welcome_data_params.data.scene = options.scene;
+		}
+
+		if(options.data_url){
+			welcome_data_params.data.data_url = options.data_url;
+		}
+
+		//==== 以下四个参数，在组件外调用的时候，可以在小程序章具体定义 ====
+		if(options.parentid){
+			welcome_data_params.data.parentid = options.parentid;
+		}
+
+		if(options.openid){
+			welcome_data_params.data.openid = options.openid;
+		}
+
+		if(options.userid){
+			welcome_data_params.data.userid = options.userid;
+		}
+
+		if(options.checkstr){
+			welcome_data_params.data.checkstr = options.checkstr;
+		}
+		//=================== End ============================
+
+		wx.showLoading({
+			title: '数据加载中...',
+		});
 
 		//通过插件中的函数调用
 		var my_plugin = requirePlugin('yyb_selfform_plugin');
@@ -153,6 +176,10 @@ Page({
 	welcome_page_callback:function(callback_data){
 
 		console.log('页面收到data中的回调数据 welcome_page_callback====>>>>', callback_data);
+
+		wx.hideLoading({
+			success: (res) => {},
+		});
   
 		if(callback_data.code != 1){
 			console.log('数据状态码不对');
@@ -219,6 +246,14 @@ Page({
 		var url = e.detail.url;
 
 		console.log('被点击的网址：' + url);
+
+		//====== 在这里重写链接或路径被点击的事件，
+		//====== 例如跳转到其他界面，或者拨打电话，或者打开webview
+
+		//xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+		//============== End ================
 
 
 
