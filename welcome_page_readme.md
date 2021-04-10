@@ -21,13 +21,14 @@ https://yanyubao.tseo.cn/Supplier/WelcomePageMgr/index.html
 ```javascript
 "plugins": {
     "yyb_selfform_plugin": {
-        "version": "1.1.0",
+        "version": "1.2.3",
         "provider": "wx00d1e2843c3b3f77" 
     }
   }
 ```
 
 其中的版本号可能会有所变化。如果是通过第三方服务商开发小程序，可以在ext.json中。
+
 
 ### 在具体的页面中调用
 
@@ -40,6 +41,7 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 ```
 
 参数举例如下，关于参数的说明，见下文。
+
 
 | No. | 参数举例 | 参数说明 |
 | :-: | :-: | :-: |
@@ -54,12 +56,45 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 ## 【调用方法2】通过组件调用的方法
 
 > 同万能表单，如果不想做深入集成，通过方法1完全够用，此方法可以无视。
-> 
-> 具体调用方法见：
-> 
+>
+> js文件中具体调用方法见：
+>
 > *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js)*
 
+
+### json和wxml文件中的设置
+
+需要指出，因为是通过“插件”的“组件”来调用，所以需要在pages的json文件中声明：
+
+```bash
+{
+  "usingComponents": {
+
+    "welcome_page-tag": "plugin://yyb_selfform_plugin/welcome_page-tag"
+  }
+}
+```
+
+在wxml文件中则非常简单，代码如下：
+
+```bash
+<view>
+		<welcome_page-tag  
+			wx:if="{{show_welcome_page_tag == 1}}"
+			callback_data = "{{callback_data}}"
+			bind:bottom_icon_click = "bottom_icon_click"
+		/>
+
+</view>
+```
+
+
+wxss文件则不需要做任何修改。
+
+
+
 ## 参数说明
+
 
 | No. | 参数名 | 必填 | 参数说明 |
 | :-: | :-: | :-: | :- |
@@ -71,6 +106,4 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 | 6 | parentid | 否 | 推荐人ID，可以为0，目前只有定义data_url的时候，可以在处理逻辑值扩展 |
 | 7 | openid | 否 | 字符串，可为空 |
 | 8 | userid | 否 | 数字，可为0 |
-| 7 | checkstr | 否 | 字符串，可为空 |
-
-
+| 9 | checkstr | 否 | 字符串，可为空 |
