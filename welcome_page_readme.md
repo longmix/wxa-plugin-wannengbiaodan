@@ -29,7 +29,6 @@ https://yanyubao.tseo.cn/Supplier/WelcomePageMgr/index.html
 
 其中的版本号可能会有所变化。如果是通过第三方服务商开发小程序，可以在ext.json中。
 
-
 ### 在具体的页面中调用
 
 ```javascript
@@ -53,6 +52,27 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 
 > 备注002： sellerid=**pQNNmSkaq**&parentid=**1234**&data_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fget_order_scan_report_page%3Forderno%3D20170123172139NJVOPW%26messageid%3D2968**
 
+
+### 底部导航中的跳转链接
+
+* 如果底部导航中有拨打电话的功能的，则使用默认的即可。
+* 如果底部导航中需要跳转到其他页面，请在引用插件的时候，声明export，
+
+```bash
+  "plugins": {
+    "yyb_selfform_plugin": {
+      "version": "1.2.3",
+      "provider": "wx00d1e2843c3b3f77",
+      "export": "exportToPlugin.js"
+    }
+  }
+```
+
+* 特别注意：增加了“"export": "exportToPlugin.js"”，改文件的代码具体见：*[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js)*
+* exportToPlugin.js中的函数名称“`bottom_icon_click`”不可以修改，必须使用这个名字。
+
+
+
 ## 【调用方法2】通过组件调用的方法
 
 > 同万能表单，如果不想做深入集成，通过方法1完全够用，此方法可以无视。
@@ -60,7 +80,6 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 > js文件中具体调用方法见：
 >
 > *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js)*
-
 
 ### json和wxml文件中的设置
 
@@ -88,10 +107,7 @@ var params_str = 'sellerid=pQNNmSkaq&platform=cms&imgid=7967';
 </view>
 ```
 
-
 wxss文件则不需要做任何修改。
-
-
 
 ## 参数说明
 
