@@ -8,6 +8,8 @@
 
 [https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)
 
+### 自定义页面功能模块
+
 调用自定义页面请移步：
 
 *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/welcome_page_readme.md](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/welcome_page_readme.md)*
@@ -39,6 +41,20 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
       })
 ```
 
+或者
+
+```javascript
+var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
+
+      wx.navigateTo({
+        url: 'plugin://yyb_selfform_plugin/pages/selfform?'+ params_str  
+      })
+```
+
+注意：url的路径有两种写法，都是小程序插件的标准。
+
+### 调用参数举例
+
 参数举例如下，关于参数的说明，见下文。
 
 
@@ -52,6 +68,25 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
 > 备注001： sellerid=**pmyxQxkkU**&form_type=2&form_token=**mrfuhd1546833814**&formid=**342**&submit_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fsubmit_data_notify_type**&openid=**oTESv4sCTCIMncMYUisOKRgNBTFg**
 > （填写CMS系统中ID为342的万能表单，并将数据保存到指定的网址submit_url，同时，如果openid:oTESv4sCTCIMncMYUisOKRgNBTFg）
+
+### 底部导航中的跳转链接
+
+* 如果底部导航中有拨打电话的功能的，则使用默认的即可。
+* 如果底部导航中需要跳转到其他页面，请在引用插件的时候，声明export，
+
+```bash
+"plugins": {
+    "yyb_selfform_plugin": {
+      "version": "1.2.3",
+      "provider": "wx00d1e2843c3b3f77",
+      "export": "exportToPlugin.js"
+    }
+  }
+```
+
+* 特别注意：增加了“"export": "exportToPlugin.js"”，改文件的代码具体见：
+  *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js)*
+* exportToPlugin.js中的函数名称“`link_item_click`”不可以修改，必须使用这个名字。
 
 ## 【调用方法2】通过组件调用的方法
 
@@ -93,7 +128,7 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 <selfform-tag  
         wx:if="{{show_selfform_tag == 1}}"  
         callback_data = "{{callback_data}}"
-        bindevent001="aaaaaa" />
+        bind:link_item_click="link_item_click" />
 ```
 
 #### 3、在onLoad函数中，引用插件的函数，并初始化插件的数据表单的网络请求
