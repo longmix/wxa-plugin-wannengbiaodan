@@ -3,22 +3,6 @@
    <selfform-tag    
         wx:if="{{show_selfform_tag == 1}}"        
         callback_data = "{{callback_data}}"
-        bindevent001="aaaaaa" />
-<!--
-   <block wx:if="{{show_selfform_tag == 1}}">
-
-    <selfform-tag    
-        callback_data="{{callback_data}}"
-        sellerid="{{current_sellerid}}"
-        form_token="{{current_weiduke_token}}"
-        form_type="{{form_type}}"
-        formid ="{{current_formid}}"
-        submit_url="{{submit_url}}"
-        openid="{{current_openid}}"
-        bindevent001="aaaaaa" />
-   </block>
-    
--->
-
+        bind:link_item_click="link_item_click" />
 
 </view>

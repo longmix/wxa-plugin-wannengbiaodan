@@ -7,7 +7,8 @@
 	"plugins": {
 		"yyb_selfform_plugin": {
 			"version": "1.2.3",
-			"provider": "wx00d1e2843c3b3f77"
+			"provider": "wx00d1e2843c3b3f77",
+			"export": "exportToPlugin.js"
 		}
 	},
 	"sitemapLocation": "sitemap.json"

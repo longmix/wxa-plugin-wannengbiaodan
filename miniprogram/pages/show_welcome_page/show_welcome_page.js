@@ -238,7 +238,7 @@ Page({
 
 	},
 	
-	bottom_icon_click: function(e){
+	link_item_click: function(e){
 		console.log('bottom_icon_click===>>>', e);
 		//console.log('bottom_icon_click===>>>', url);
 

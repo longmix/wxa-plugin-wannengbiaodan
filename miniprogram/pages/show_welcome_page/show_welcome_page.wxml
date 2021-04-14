@@ -2,7 +2,7 @@
 		<welcome_page-tag  
 			wx:if="{{show_welcome_page_tag == 1}}"
 			callback_data = "{{callback_data}}"
-			bind:bottom_icon_click = "bottom_icon_click"
+			bind:link_item_click = "link_item_click"
 		/>
 
 </view>

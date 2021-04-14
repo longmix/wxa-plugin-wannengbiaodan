@@ -118,7 +118,7 @@
     <view>或者 
     https://github.com/longmix/shopmallminiprogram</view>
     <view> ------ </view>
-    <view>测试过程中如果不填写，则使用默认参数读取一个万能表单。</view>
+    <view>github上的文档中完整的可填写参数举例。测试过程中如果不填写，则使用默认参数读取万能表单或自定义页面。</view>
   </view>
 
 

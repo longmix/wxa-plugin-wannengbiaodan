@@ -70,7 +70,7 @@ Page({
       formid:'342',
       submit_url: encodeURIComponent('https://yanyubao.tseo.cn/openapi/Jianghanyinhua/submit_data_notify_type'),
       openid:'oTESv4sCTCIMncMYUisOKRgNBTFg',
-      userid:'8888',
+      userid:'1537',
       checkstr:'28bba0f22a29881ba291fb50f4152655'
     }
 
@@ -159,18 +159,20 @@ Page({
     var options = {
       sellerid:'pQNNmSkaq',
       platform:'cms',
-      imgid:'7967',
+      //imgid:'7967',
+      //imgid:'8044',
+      imgid:'31'
     }
 
     //默认参数：请求延誉宝系统中的商城图片
-    var options = {
+    var options333 = {
       sellerid:'pQNNmSkaq',
       platform:'pic',
       imgid:'302',
     }
 
     //默认参数：请求指定的数据源网址
-    var options = {
+    var options444 = {
       sellerid:'pQNNmSkaq',
       parentid:'1234',
       data_url:encodeURIComponent('https://yanyubao.tseo.cn/openapi/Jianghanyinhua/get_order_scan_report_page?orderno=20170123172139NJVOPW&messageid=2968'),
@@ -178,7 +180,7 @@ Page({
     }
 
     //默认参数：模拟 - 通过小程序的带参小程序码打开
-    var options = {
+    var options555 = {
       sellerid:'pQNNmSkaq',
       scene:'7967@0@cms',
     }
