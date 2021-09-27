@@ -84,7 +84,7 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
   }
 ```
 
-* 特别注意：增加了“"export": "exportToPlugin.js"”，改文件的代码具体见：
+* 特别注意：增加了“"export": "exportToPlugin.js"”，该文件的代码具体见：
   *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js)*
 * exportToPlugin.js中的函数名称“`link_item_click`”不可以修改，必须使用这个名字。
 * 因为在插件中没有权限调用wx.NavagteTo接口，所以link_item_click这个函数里面同样不可以通过这个接口跳转到其他界面或者H5页面；但是可以使用复制到剪切板等其他接口。
