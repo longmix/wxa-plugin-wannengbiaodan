@@ -8,6 +8,25 @@
 
 [https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)
 
+Version 1.2.7
+增加将链接内容复制到剪切板的功能，链接的语法为“copytext://”，在函数copy_text中响应，具体调用方法见插件说明文档。
+
+Version 1.2.6
+1、万能表单提交的时候，增加对隐藏字段的处理。 2、万能表单提交成功后，跳转到一个提示界面，避免停留在原界面不动。
+
+Version 1.2.5
+优化富媒体显示，增加插件内链接点击事件的回调函数。
+
+Version 1.2.3
+修正1.2.0版本反馈的BUG，补正对一些参数的支持。
+
+Version 1.2.0
+优化万能表单，增加自定义页面。
+
+Version 1.1.0
+支持组件模式调用插件。
+
+
 ### 自定义页面功能模块
 
 调用自定义页面请移步：
@@ -23,7 +42,7 @@
 ```javascript
 "plugins": {
     "yyb_selfform_plugin": {
-        "version": "1.2.0",
+        "version": "1.2.7",
         "provider": "wx00d1e2843c3b3f77" 
     }
   }
@@ -77,7 +96,7 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 ```bash
 "plugins": {
     "yyb_selfform_plugin": {
-      "version": "1.2.3",
+      "version": "1.2.7",
       "provider": "wx00d1e2843c3b3f77",
       "export": "exportToPlugin.js"
     }
@@ -86,7 +105,7 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
 * 特别注意：增加了“"export": "exportToPlugin.js"”，该文件的代码具体见：
   *[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/exportToPlugin.js)*
-* exportToPlugin.js中的函数名称“`link_item_click`”不可以修改，必须使用这个名字。
+* exportToPlugin.js中的函数名称“`link_item_click`”和“`copy_text`”不可以修改，必须使用这个名字。
 * 因为在插件中没有权限调用wx.NavagteTo接口，所以link_item_click这个函数里面同样不可以通过这个接口跳转到其他界面或者H5页面；但是可以使用复制到剪切板等其他接口。
 * 如果希望这个点击事件可以跳转出去，需要通过【调用方法2】实现。
 
@@ -99,7 +118,7 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 ```javascript
 "plugins": {
     "live-player-plugin": {
-        "version": "1.0.3",
+        "version": "1.2.7",
         "provider": "wx00d1e2843c3b3f77" 
     }
   }
@@ -108,6 +127,9 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 其中的版本号可能会有所变化。
 
 同样，如果是通过第三方服务商开发小程序，可以放在ext.json中。
+
+调用的示例代码见
+[https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js](https://github.com/longmix/wxa-plugin-wannengbiaodan/blob/main/miniprogram/pages/show_form/show_form.js)
 
 ### 在具体的页面中调用
 
@@ -130,7 +152,9 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 <selfform-tag  
         wx:if="{{show_selfform_tag == 1}}"  
         callback_data = "{{callback_data}}"
-        bind:link_item_click="link_item_click" />
+        bind:link_item_click="link_item_click"
+        bind:copy_text="copy_text"
+        />
 ```
 
 #### 3、在onLoad函数中，引用插件的函数，并初始化插件的数据表单的网络请求
