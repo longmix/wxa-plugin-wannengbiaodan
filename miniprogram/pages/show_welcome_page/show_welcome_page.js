@@ -1,4 +1,7 @@
 // miniprogram/pages/show_welcome_page/show_welcome_page.js
+
+import abotapi from '../../abotapi.js';
+
 Page({
 
 	/**
@@ -26,6 +29,15 @@ Page({
 	onLoad: function (options) {
 
 		console.log('welcome welcome welcome ====>>', options);
+
+		wx.showModal({
+			cancelColor: 'cancelColor',
+			title:'提示',
+			content:'这是调用万能表单组件中自定义页面的示例（通过组件调用）'
+		})
+		wx.showToast({
+			title: '这是示例代码！',
+		})
 
 
 		//=====分析参数，用于分享转发=====
@@ -252,8 +264,27 @@ Page({
 
 		//xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+		abotapi.call_h5browser_or_other_goto_url(url);
+
 
 		//============== End ================
+
+
+
+	},
+
+	copy_text: function(e){
+		console.log('copy_text===>>>', e);
+		//console.log('bottom_icon_click===>>>', url);
+
+
+		var text = e.detail.text;
+
+		console.log('准备复制的内容：' + text);
+
+		wx.setClipboardData({
+      data: text,
+    })
 
 
 

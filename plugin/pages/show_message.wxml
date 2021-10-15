@@ -1,0 +1,14 @@
+<!--plugin/pages/show_message.wxml-->
+<view>
+  <view style="text-align: center; margin-top: 180rpx;">
+
+    <image style="width:200rpx;height:auto;" src="/images/icon_success.png" mode="widthFix"></image>
+    <view style="margin-top: 50rpx; font-size:36rpx; color:#666;">
+      <text>{{message_text}}</text>
+    </view>
+
+  </view>
+
+</view>
+
+

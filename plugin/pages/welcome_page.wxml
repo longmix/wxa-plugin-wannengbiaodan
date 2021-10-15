@@ -1,0 +1,11 @@
+<!--plugin/pages/welcome_page.wxml
+<text>plugin/pages/welcome_page.wxml ssss</text>-->
+<view>
+		<welcome_page-tag  
+			wx:if="{{show_welcome_page_tag == 1}}"
+			callback_data = "{{callback_data}}"
+			bind:link_item_click = "link_item_click"
+			bind:copy_text = "copy_text"
+		/>
+
+</view>

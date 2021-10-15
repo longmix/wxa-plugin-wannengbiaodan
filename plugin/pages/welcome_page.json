@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "welcome_page-tag": "../components/welcome_page-tag"
+
+  }
+}

@@ -1,0 +1,152 @@
+/*@import "/components/date-time-picker.wxss";*/
+
+@import "../wxParse/wxParse.wxss";
+
+page {
+  background-color: #EFEFF4;
+}
+
+.wenzhang_detail{
+  background-color: #fff;
+  padding: 10rpx 0 10rpx 0;
+}
+
+/**用户信息样式**/
+.info-container{
+  background-color:#EFEFF4;
+  height: 100%;
+  margin-top: 0rpx;
+  display: block;
+}
+.page-body-setting {
+  margin-top: 12rpx;
+  height: 100%;
+}
+  
+.page-body-setting-item {
+  /* height: 90rpx; */
+  background-color: #fff;
+  font-size: 28rpx;  
+  border-bottom-width: 90%;
+  border-bottom: 1px solid #EFEFF4;
+  padding: 10rpx 0;
+}
+.own-info-item{
+  width: 100%;
+  display: block;
+  justify-content: space-around;
+}
+.info-name{
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  text-align: left;
+  padding: 10rpx 0rpx 10rpx 30rpx;
+  margin:0rpx;
+  font-weight: bold;
+}
+.info-text{
+  display: block;
+  font-size: 30rpx;
+  color:#333;
+  text-align: left;
+  padding: 10rpx 30rpx;
+  margin:0rpx;
+  
+}
+
+.info-text-input-tips{
+  width: 80%;
+  display: block;
+
+  background-color: #fff;
+  color:#555;
+  
+  font-size: 25rpx;
+  text-align: left; 
+  padding:5rpx 30rpx;
+  margin: 0;
+}
+
+.info-text-picker{
+  line-height: 60rpx;
+  border: 1px solid #E8E8E8;
+  margin: 0;
+  height: 60rpx;
+  padding:10rpx 30rpx;
+  width: 80%;
+}
+
+.info-text textarea{
+  
+  border: 1px solid #E8E8E8;
+  padding:10rpx 30rpx; 
+  margin: 0;
+  height: 200rpx;
+  line-height: 40rpx;
+  width: 80%;
+
+}
+
+.input-text{
+  border: 1px solid #E8E8E8;
+  border-radius: 5rpx;
+  margin: 0;
+  height: 60rpx;
+  padding:10rpx 30rpx;
+  width: 80%;
+}
+
+
+.img_box{
+  text-align: left;
+  background: #fff;
+  padding: 30rpx;
+}
+
+.button{
+  margin-top: 20rpx;
+  background-color:#00BFFF;
+  color: #FFF;
+  width: 96%;
+  margin-bottom: 28rpx;
+  font-size: 32rpx;
+
+}
+.button-hover {
+  background-color: green;
+}
+.info-file-wenzi{
+  border: 1px solid #E8E8E8;
+  padding: 10rpx 20rpx;
+}
+
+.checkbox_item{
+  display: block;
+  font-size: 18px;
+}
+
+.checkbox_item checkbox{
+  margin-left: 15%;
+  margin-bottom: 12px;
+  padding-left: 20rpx;
+}
+
+.wxParse-inline{
+    display: inline;
+    margin: 0;
+    padding: 0;
+    font-size:30rpx;
+    color:#333;
+}
+
+.wxParse-p{
+    text-align: left;
+    margin: 10rpx;
+    font-size:30rpx;
+    color:#333;
+}
+
+.wxParse-br{
+  height: 20rpx;
+}

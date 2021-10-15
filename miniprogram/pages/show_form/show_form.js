@@ -38,8 +38,8 @@ Page({
 
 
       console.log('selfform=====>>>>>', options);
-      
 
+      
       var selfform_data_params = {
             data:{
               sellerid:options.sellerid, 
@@ -55,6 +55,28 @@ Page({
       if(options.submit_url){
         selfform_data_params.data.submit_url = decodeURIComponent(options.submit_url);
       }
+
+      //检查是否有隐藏域
+      //var hidden_list = [];
+      for(var key in options){
+        if((key == 'form_type')||(key == 'submit_url')||(key == 'formid')
+          || (key == 'cataid') || (key == 'sellerid') || (key == 'token')){
+            continue;
+        }
+
+        if(!options[key]){
+          continue;
+        }
+
+        console.log('key==>>>', key);
+        console.log('value==>>>', options[key]);
+
+        //hidden_list[key] = options[key];
+        selfform_data_params.data[key] = options[key];
+      }
+
+      console.log('11111111111111111111====>>页面中收集整理准备提交的数据为：', selfform_data_params.data);
+
 
       //====  这三项参数可以在自己的项目中根据实际情况赋值，也可以通过这个page的参数传入进来 ======
       if(options.openid){
@@ -265,9 +287,26 @@ Page({
       //====== 例如跳转到其他界面，或者拨打电话，或者打开webview
   
       //xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  
-  
+
+      abotapi.call_h5browser_or_other_goto_url(url);
+      
       //============== End ================
+  
+  
+  
+    },
+    copy_text: function(e){
+      console.log('copy_text===>>>', e);
+      //console.log('bottom_icon_click===>>>', url);
+  
+  
+      var text = e.detail.text;
+  
+      console.log('准备复制的内容：' + text);
+  
+      wx.setClipboardData({
+        data: text,
+      })
   
   
   

@@ -1,0 +1,14 @@
+{
+  "publicComponents": {
+    "selfform-tag": "components/selfform-tag",
+    "hello-component": "components/selfform-tag",
+    "welcome_page-tag": "components/welcome_page-tag"
+  },
+  "pages": {
+    "hello-page": "pages/selfform",
+    "selfform": "pages/selfform",
+    "welcome_page": "pages/welcome_page",
+    "show_message": "pages/show_message"
+  },
+  "main": "index.js"
+}
