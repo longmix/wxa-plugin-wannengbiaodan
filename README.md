@@ -8,6 +8,9 @@
 
 [https://github.com/longmix/wxa-plugin-wannengbiaodan](https://github.com/longmix/wxa-plugin-wannengbiaodan)
 
+Version 1.2.8
+万能表单控件增加隐藏平铺广告和显示并自动播放视频两个选项。
+
 Version 1.2.7
 增加将链接内容复制到剪切板的功能，链接的语法为“copytext://”，在函数copy_text中响应，具体调用方法见插件说明文档。
 
@@ -79,11 +82,19 @@ var params_str = 'sellerid=pmyxQxkkU&token=abcdefg&formid=1234';
 
 | No. | 参数举例 | 参数说明 |
 | :-: | :-: | :-: |
-| 1 | sellerid=**pQNNmSkaq**&form_type=1&userid=**1234**&checkstr=**aaaaaaaaaa** | 请求商户pQNNmSkaq的会员ID为1234的会员的属性 |
-| 2 | sellerid=**pmyxQxkkU**&form_type=2&form_token=**gwcuuk1411034699**&formid=**37** | 填写CMS系统中ID为37的万能表单 |
-| 3 | 参数太长，见“备注001” | 填写CMS系统中ID为342的万能表单，以及其他操作。 |
-| 4 | sellerid=**pmyxQxkkU**&form_type=3&form_token=**cugnmr1590638215**&formid=**4493** | 为CMS系统中ID为4493的分类增加一篇文章 |
-| 5 | sellerid=**pQNNmSkaq**&scene=**302@0@pic** | 获取商城系统中的ID为302的广告图片 |
+| 1 | sellerid | 是 | 延誉宝商户编号，用于动态获取头部和按钮的背景颜色。 |
+| 2 | form_token | 否 |  微读客项目Token，可选，用于验证formid是否合法。 |
+| 3 | formid | 是 |  万能表单ID，用于显示表单的内容 |
+| 4 | form_type | 否 |  表单类型，默认为2，代表读取微读客的万能表单 |
+| 5 | submit_url | 否 |  数据提交的网址入口，URL的域名必须在小程序的request域名列表中，具体见下面说明。 |
+| 6 | hidden_ad_img_list | 否 |  如果值等于1，则不显示平铺广告 |
+| 7 | video_url | 否 |  如果有视频，这里传入视频的URL网址（请做encodeURIComponent转换） |
+| 8 | video_cover_url | 否 |  如果有视频，这里传入视频封面的URL（请做encodeURIComponent转换） |
+| 9 | video_autoplay | 否 |  如果有视频，video_autoplay值等于1，则自动播放视频 |
+| 10 | 其他参数 | 否 |  在进入小程序页面时候带进去，并随着其他字段一起提交到网址。  |
+| 11 | scene | 否 |  小程序中的场景ID，可以生产无限多个小程序码。  |
+| 12 | openid | 否 |  如果form_type等于2，则可以带上openid，以获取之前填写的数据。  |
+| 13 | userid | 否 |  如果form_type等于1，则userid参数必带，请做好身份验证。  |
 
 > 备注001： sellerid=**pmyxQxkkU**&form_type=2&form_token=**mrfuhd1546833814**&formid=**342**&submit_url=**https%3A%2F%2Fyanyubao.tseo.cn%2Fopenapi%2FJianghanyinhua%2Fsubmit_data_notify_type**&openid=**oTESv4sCTCIMncMYUisOKRgNBTFg**
 > （填写CMS系统中ID为342的万能表单，并将数据保存到指定的网址submit_url，同时，如果openid:oTESv4sCTCIMncMYUisOKRgNBTFg）
